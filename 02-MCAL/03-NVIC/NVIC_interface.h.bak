@@ -1,0 +1,40 @@
+/****************************************************************/
+/*	Author   : Ahmed Mohy									   	*/
+/*	Date     : 26 DEC 2021										*/
+/*	Version  : V01												*/
+/****************************************************************/
+
+
+#ifndef		NVIC_INTERFACE_H
+#define		NVIC_INTERFACE_H
+
+
+
+
+#define 	PRIGROUP3			0X05FA0300	// 4 bits for Group priority and 0 bits for sub priority
+
+#define 	PRIGROUP4			0X05FA0400	// 3 bits for Group priority and 1 bits for sub priority
+
+#define 	PRIGROUP5			0X05FA0500	// 2 bits for Group priority and 2 bits for sub priority
+
+#define 	PRIGROUP6			0X05FA0600	// 1 bits for Group priority and 3 bits for sub priority
+
+#define 	PRIGROUP7			0X05FA0700	// 0 bits for Group priority and 4 bits for sub priority
+
+
+
+void MNVIC_voidEnableInterrupt(u8 Copy_u8IntNum);
+
+void MNVIC_voidDisableInterrupt(u8 Copy_u8IntNum);
+
+void MNVIC_voidSetPendingFlag(u8 Copy_u8IntNum);
+
+void MNVIC_voidClearPendingFlag(u8 Copy_u8IntNum);
+
+u8 MNVIC_u8GetActiveFlag(u8 Copy_u8IntNum);
+
+void MNVIC_voidSetPriority(s8 Copy_s8IntNum , u8 Copy_u8SubPriority , u8 Copy_u8GroupPriority , u32 Copy_u32PriGroup);
+
+
+
+#endif

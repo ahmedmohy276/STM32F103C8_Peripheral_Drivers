@@ -1,0 +1,29 @@
+/********************************************************************/
+/* Author   : Ahmed Mohy						    				*/
+/* Date	    : 25 DEC 2021											*/
+/* Version  : V01													*/
+/********************************************************************/
+
+
+
+#ifndef SEVSEG_CONFIG_H
+#define SEVSEG_CONFIG_H
+
+/* Options :    COMMON_ANODE_SEVSEG
+				COMMON_CATHODE_SEVSEG
+				*/
+#define		SEVSEG_TYPE		COMMON_CATHODE_SEVSEG
+
+
+/* Options :    SEVSEG_PORTA
+				SEVSEG_PORTB
+				SEVSEG_PORTC
+				*/
+#define 	SEVSEG_PORT			SEVSEG_PORTA
+
+
+/* Options : from 0 to 15 first pin number */
+#define		SEVSEG_FIRST_PIN		0
+
+
+#endif

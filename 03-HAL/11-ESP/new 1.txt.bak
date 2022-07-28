@@ -1,0 +1,4 @@
+AT+CWJAP_CUR="Honor_8x","01065121188Mohy#"
+AT+CIPSTART="TCP","162.253.155.226",80
+AT+CIPSEND=40
+GET http://mohy.freevar.com/status.txt

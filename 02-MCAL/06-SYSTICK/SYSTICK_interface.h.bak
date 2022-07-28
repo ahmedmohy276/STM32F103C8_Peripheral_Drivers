@@ -1,0 +1,16 @@
+/*****************************************************************************/
+/* Author    : Ahmed Mohy													 */
+/* Date      : 28 DEC 2021													 */
+/* Version   : V01														     */
+/*****************************************************************************/
+
+#ifndef		SYSTICK_INTERFACE_H
+#define 	SYSTICK_INTERFACE_H
+
+/* Delay function when SysTick is working at 1MHZ */
+void MSYSTICK_voidDelay_us(u32 Copy_u8MicroSecNum);
+
+/* Delay function when SysTick is working at 1MHZ */
+void MSYSTICK_voidDelay_ms(u32 Copy_u8MilliSecNum);
+
+#endif

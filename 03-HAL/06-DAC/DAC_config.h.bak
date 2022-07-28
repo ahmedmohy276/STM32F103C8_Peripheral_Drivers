@@ -1,0 +1,28 @@
+/*****************************************/
+/* Author  :  Ahmed Mohy                 */
+/* Date    :  2 January 2022             */
+/* Version :  V01                        */
+/*****************************************/
+
+
+#ifndef		DAC_CONFIG_H
+#define     DAC_CONFIG_H
+
+/* Options : DAC_PORTA
+			 DAC_PORTB
+			 DAC_PORTC
+			*/
+#define 	DAC_GPIO			DAC_PORTA
+
+
+#define 	DAC-PIN0			0
+#define 	DAC-PIN1			1
+#define 	DAC-PIN2			2
+#define 	DAC-PIN3			3
+#define 	DAC-PIN4			4
+#define 	DAC-PIN5			5
+#define 	DAC-PIN6			6
+#define 	DAC-PIN7			7
+
+
+#endif

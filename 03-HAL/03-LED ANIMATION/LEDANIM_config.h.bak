@@ -1,0 +1,20 @@
+/*****************************************************************************/
+/* Author    : Ahmed Mohy													 */
+/* Date      : 28 DEC 2021													 */
+/* Version   : V01														     */
+/*****************************************************************************/
+
+
+#ifndef		LEDANIM_CONFIG_H
+#define 	LEDANIM_CONFIG_H
+
+
+/* Options : PORTA
+			 PORTB
+			 PORTC
+			 */
+#define 	LED_ANNIMATION_PORT						PORTA
+
+#define 	LED_ANNIMATION_PORT_MODE				GPIO_OUTPUT_SPEED_10MHZ_PP
+
+#endif

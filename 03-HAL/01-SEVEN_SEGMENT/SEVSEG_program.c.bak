@@ -1,0 +1,75 @@
+/********************************************************************/
+/* Author   : Ahmed Mohy						    				*/
+/* Date	    : 25 DEC 2021											*/
+/* Version  : V01													*/
+/********************************************************************/
+
+#include "STD_TYPES.h"
+#include "BIT_MATH.h"
+
+
+#include "RCC_interace.h"
+#include "DIO_interface.h"
+
+
+#include "SEVSEG_interface.h"
+#include "SEVSEG_private.h"
+#include "SEVSEG_config.h"
+
+
+void SEVSEG_voidDisplay(u8 Copy_u8Num)
+{
+	switch (SEVSEG_TYPE)
+	{
+		case COMMON_CATHODE_SEVSEG :
+			switch (SEVSEG_PORT)
+			{
+				case SEVSEG_PORTA :
+					RCC_voidEnableClock(RCC_APB2,IOPAEN);
+					DIO_voidSetPortDirection(SEVSEG_PORTA , DIO_OUTPUT_SPEED_10MHZ_PP);
+					DIO_voidSetPortValue(SEVSEG_PORTA , (u16)(array_val[Copy_u8Num] << SEVSEG_FIRST_PIN))
+					break;
+					
+				case SEVSEG_PORTB :
+					RCC_voidEnableClock(RCC_APB2,IOPBEN);
+					DIO_voidSetPortDirection(SEVSEG_PORTB , DIO_OUTPUT_SPEED_10MHZ_PP);
+					DIO_voidSetPortValue(SEVSEG_PORTB , (u16)(array_val[Copy_u8Num] << SEVSEG_FIRST_PIN))
+					break;
+					
+				case SEVSEG_PORTC :
+					RCC_voidEnableClock(RCC_APB2,IOPCEN);
+					DIO_voidSetPortDirection(SEVSEG_PORTC , DIO_OUTPUT_SPEED_10MHZ_PP);
+					DIO_voidSetPortValue(SEVSEG_PORTC , (u16)(array_val[Copy_u8Num] << SEVSEG_FIRST_PIN))
+					break;
+					
+				default	:		break;
+			}
+			break;
+		case COMMON_ANODE_SEVSEG :
+			switch (SEVSEG_PORT)
+			{
+				case SEVSEG_PORTA :
+					RCC_voidEnableClock(RCC_APB2,IOPAEN);
+					DIO_voidSetPortDirection(SEVSEG_PORTA , DIO_OUTPUT_SPEED_10MHZ_PP);
+					DIO_voidSetPortValue(SEVSEG_PORTA , (u16)((~(array_val[Copy_u8Num])) << SEVSEG_FIRST_PIN))
+					break;
+					
+				case SEVSEG_PORTB :
+					RCC_voidEnableClock(RCC_APB2,IOPBEN);
+					DIO_voidSetPortDirection(SEVSEG_PORTB , DIO_OUTPUT_SPEED_10MHZ_PP);
+					DIO_voidSetPortValue(SEVSEG_PORTB , (u16)((~(array_val[Copy_u8Num])) << SEVSEG_FIRST_PIN))
+					break;
+					
+				case SEVSEG_PORTC :
+					RCC_voidEnableClock(RCC_APB2,IOPCEN);
+					DIO_voidSetPortDirection(SEVSEG_PORTC , DIO_OUTPUT_SPEED_10MHZ_PP);
+					DIO_voidSetPortValue(SEVSEG_PORTC , (u16)((~(array_val[Copy_u8Num])) << SEVSEG_FIRST_PIN))
+					break;
+					
+				default	:		break;
+			}
+			break;
+		
+		default : 			break;
+	}
+}

@@ -1,0 +1,113 @@
+/*****************************************************************************/
+/* Author    : Ahmed Mohy													 */
+/* Date      : 28 DEC 2021													 */
+/* Version   : V01														     */
+/*****************************************************************************/
+
+#include "STD_TYPES.h"
+#include "BIT_MATH.h"
+
+#include "LEDANIM_interface.h"
+#include "LEDANIM_private.h"
+#include "LEDANIM_config.h"
+
+#include "DIO_interface.h"
+#include "SYSTICK_interface.h"
+#include "LED_interface.h"
+
+
+
+void LEDANIM_voidInit(void)
+{
+	MGPIO_voidSetPinDirection(LED1 , LED_ANNIMATION_PORT_MODE);
+	MGPIO_voidSetPinDirection(LED2 , LED_ANNIMATION_PORT_MODE);
+	MGPIO_voidSetPinDirection(LED3 , LED_ANNIMATION_PORT_MODE);
+	MGPIO_voidSetPinDirection(LED4 , LED_ANNIMATION_PORT_MODE);
+	MGPIO_voidSetPinDirection(LED5 , LED_ANNIMATION_PORT_MODE);
+	MGPIO_voidSetPinDirection(LED6 , LED_ANNIMATION_PORT_MODE);
+	MGPIO_voidSetPinDirection(LED7 , LED_ANNIMATION_PORT_MODE);
+	MGPIO_voidSetPinDirection(LED8 , LED_ANNIMATION_PORT_MODE);
+}
+
+
+/* Function to display 8 leds shift right and left (Ping Pong) */
+void LEDANIM_voidDisplayPingPong(u32 Copy_u32Delayms , u8 Copy_u8Repetition)
+{
+	for (u8 i=0 ; i < Copy_u8Repetition ; i++)
+	{
+		for (s8 j=15 ; j >= 0 ; j--)
+		{
+			/* Shift leds to right */
+			if (j > 7)
+			{
+				LED_voidTurnToggle(LED_ANNIMATION_PORT , j - 8 , Copy_u32Delayms);
+				/*LED_voidTurnOn(LED_ANNIMATION_PORT , j - 8);
+				MSYSTICK_voidDelay_ms(200);
+				LED_voidTurnOff(LED_ANNIMATION_PORT , j - 8);*/
+			}
+			/* Shift leds to left */
+			else if (j <= 7)
+			{
+				LED_voidTurnToggle(LED_ANNIMATION_PORT , 7 - j , Copy_u32Delayms);
+				/*LED_voidTurnOn(LED_ANNIMATION_PORT , 7 - j);
+				MSYSTICK_voidDelay_ms(200);
+				LED_voidTurnOff(LED_ANNIMATION_PORT , 7 - j);*/
+			}
+		}
+	}
+	
+}
+
+
+void LEDANIM_voidDisplayInOut(u32 Copy_u32Delayms , u8 Copy_u8Repetition)
+{
+	for (u8 i=0 ; i < Copy_u8Repetition ; i++)
+	{
+		LED_voidTurnOn(LED4);
+		LED_voidTurnOn(LED5);
+		MSTK_voidSetBusyWait(Copy_u32Delayms*1000);
+		
+		LED_voidTurnOn(LED3);
+		LED_voidTurnOn(LED6);
+		MSTK_voidSetBusyWait(Copy_u32Delayms*1000);
+		
+		LED_voidTurnOn(LED2);
+		LED_voidTurnOn(LED7);
+		MSTK_voidSetBusyWait(Copy_u32Delayms*1000);
+		
+		LED_voidTurnOn(LED1);
+		LED_voidTurnOn(LED8);
+		MSTK_voidSetBusyWait(Copy_u32Delayms*1000);
+		
+		LED_voidTurnOff(LED1);
+		LED_voidTurnOff(LED8);
+		MSTK_voidSetBusyWait(Copy_u32Delayms*1000);
+		
+		LED_voidTurnOff(LED2);
+		LED_voidTurnOff(LED7);
+		MSTK_voidSetBusyWait(Copy_u32Delayms*1000);
+		
+		LED_voidTurnOff(LED3);
+		LED_voidTurnOff(LED6);
+		MSTK_voidSetBusyWait(Copy_u32Delayms*1000);
+		
+		LED_voidTurnOff(LED4);
+		LED_voidTurnOff(LED5);
+		MSTK_voidSetBusyWait(Copy_u32Delayms*1000);
+	}
+}
+
+
+/* Function to flashing 8 leds */
+void LEDANIM_voidDisplayFlashing(u32 Copy_u32Delayms , u8 Copy_u8Repetition)
+{
+	for (u8 i=0 ; i < Copy_u8Repetition ; i++)
+	{
+		MGPIO_voidSetPortValue(LED_ANNIMATION_PORT , 0XFFFFFFFF);
+		MSTK_voidSetBusyWait(Copy_u32Delayms*1000);
+		MGPIO_voidSetPortValue(LED_ANNIMATION_PORT , 0X00000000);
+		MSTK_voidSetBusyWait(Copy_u32Delayms*1000);
+	}
+}
+
+

@@ -1,0 +1,41 @@
+/*****************************************/
+/* Author  :  Ahmed Mohy                 */
+/* Date    :  3 January 2022             */
+/* Version :  V01                        */
+/*****************************************/
+
+
+#ifndef		DMA_CONFIG_H
+#define 	DMA_CONFIG_H
+
+/* Options : 0 --> 6 */
+#define		DMA_CHANNEL					0
+
+/* Options : 8_BITS
+			 16_BITS
+			 32_BITS
+			 */
+#define		SOURCE_SIZE 				32_BITS
+#define		DESTINATION_SIZE 			32_BITS
+
+/* Options :READ_FROM_PERIPHERAL
+			READ_FROM_MEMORY
+			*/
+#define		DATA_TRANSFER_DIRECTION		READ_FROM_PERIPHERAL
+
+/* Options : ENABLE
+			 DISABLE
+			 */
+#define		TRANSFER_INT				DISABLE
+#define		HALF_TRANSFER_INT			DISABLE
+#define		TRANSFER_ER_INT				DISABLE
+
+#define		MINC						ENABLE
+#define		PINC						ENABLE
+
+#define		CIRCULAR_MODE				DISABLE
+
+#define		MEMORY_TO_MEMORY_MODE		ENABLE
+	
+
+#endif

@@ -1,0 +1,16 @@
+/*****************************************************************************/
+/* Author    : Ahmed Mohy													 */
+/* Date      : 28 DEC 2021													 */
+/* Version   : V01														     */
+/*****************************************************************************/
+
+
+#ifndef		LEDANIM_PRIVATE_H
+#define 	LEDANIM_PRIVATE_H
+
+
+#define		PORTA			0
+#define		PORTB			1
+#define		PORTC			2
+
+#endif
